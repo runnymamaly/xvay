@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.authors="Axl <https://github.com/ADKix>"
 RUN apk add -U --no-cache 7zip util-linux-misc libqrencode-tools
 ARG XRAY
 ARG TARGETPLATFORM
-WORKDIR "/opt"
+WORKDIR "/opt/"
 RUN if   [ "${TARGETPLATFORM}" = "linux/arm64" ] || [ "${TARGETPLATFORM}" = "linux/arm64/v8" ]; then arch=arm64-v8a; \
     elif [ "${TARGETPLATFORM}" = "linux/arm/v7" ]; then arch=arm32-v7a; \
     elif [ "${TARGETPLATFORM}" = "linux/386" ]; then arch=32; \
