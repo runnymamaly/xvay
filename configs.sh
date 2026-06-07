@@ -6,7 +6,7 @@ if [ -z "$(ls -A "data" 2>/dev/null)" ]; then
 fi
 ID="$(cat "data/uuid")"
 PRIVATE_KEY="$(awk '/PrivateKey/{print $2}' "data/keys")"
-PUBLIC_KEY="$(awk '/Password/{print $2}' "data/keys")"
+PUBLIC_KEY="$(awk '/Password/{print $3}' "data/keys")"
 ADDRESS="${ADDRESS:-$(wget -q "ifconfig.me/ip" -O-)}"
 
 if [ -z "${ADDRESS}" ]; then echo "The ADDRESS environment variable must be set!" >&2; exit 1; fi
