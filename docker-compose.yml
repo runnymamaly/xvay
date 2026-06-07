@@ -1,7 +1,6 @@
 services:
   server:
     image: "adkix/xray-server"
-    env_file: ".env"
     ports:
       - "${PORT:-443}:443"
     volumes:
