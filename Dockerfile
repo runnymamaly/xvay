@@ -21,5 +21,4 @@ ENV PORT=443
 ENV NETWORK=tcp
 ENV SNI=www.google.com
 RUN mkdir -p "/opt/data"
-VOLUME ["/opt/data"]
 EXPOSE 443
