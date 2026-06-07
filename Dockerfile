@@ -16,6 +16,7 @@ RUN if   [ "${TARGETPLATFORM}" = "linux/arm64" ] || [ "${TARGETPLATFORM}" = "lin
         7z -si a "xray.7z"
 COPY "entrypoint.sh" /
 COPY "command.sh" /opt
+COPY "configs.sh" /opt
 ENTRYPOINT ["sh", "/entrypoint.sh"]
 CMD ["sh", "/opt/command.sh"]
 ENV PORT=443
