@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-echo "export PATH="/tmp:$PATH"" > /etc/profile.d/99path.sh
+echo "PATH="/tmp:$PATH"" >> /etc/environment
 if ! command -v xray >/dev/null; then
   7z x -y -bsp0 -bso0 "xray.7z" -o"/tmp"
   chmod +x "/tmp/xray"
