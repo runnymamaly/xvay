@@ -4,5 +4,5 @@ services:
     ports:
       - "${PORT:-443}:443"
     volumes:
-      - "./data:/opt/data"
+      - "./app/data:/app/opt/data"
     restart: unless-stopped
