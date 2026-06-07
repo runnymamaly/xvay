@@ -3,6 +3,4 @@ services:
     image: "adkix/xray-server"
     ports:
       - "${PORT:-443}:443"
-    volumes:
-      - "./app/data:/app/opt/data"
     restart: unless-stopped
