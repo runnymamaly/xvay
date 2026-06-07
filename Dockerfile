@@ -14,9 +14,10 @@ RUN if   [ "${TARGETPLATFORM}" = "linux/arm64" ] || [ "${TARGETPLATFORM}" = "lin
     wget -qnc "https://github.com/XTLS/Xray-core/releases/download/${XRAY}/Xray-linux-${arch}.zip" -O- | \
       unzip -p - "xray" | \
         7z -si a "xray.7z"
-COPY "entrypoint.sh" "command.sh" /
+COPY "entrypoint.sh" /
+COPY "command.sh" /opt
 ENTRYPOINT ["sh", "/entrypoint.sh"]
-CMD ["sh", "/command.sh"]
+CMD ["sh", "/opt/command.sh"]
 ENV PORT=443
 ENV NETWORK=tcp
 ENV SNI=www.google.com
