@@ -1,6 +1,0 @@
-services:
-  server:
-    image: "adkix/xray-server"
-    ports:
-      - "${PORT:-443}:443"
-    restart: unless-stopped
