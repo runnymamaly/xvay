@@ -1,19 +1,14 @@
 ARG ALPINE=3.23.3
-ARG XRAY=v26.3.27
 
 FROM alpine:${ALPINE}
 LABEL org.opencontainers.image.authors="Axl <https://github.com/ADKix>"
 RUN apk add -U --no-cache 7zip util-linux-misc libqrencode-tools
-ARG XRAY
-ARG TARGETPLATFORM
 WORKDIR "/opt/"
-RUN if   [ "${TARGETPLATFORM}" = "linux/arm64" ] || [ "${TARGETPLATFORM}" = "linux/arm64/v8" ]; then arch=arm64-v8a; \
-    elif [ "${TARGETPLATFORM}" = "linux/arm/v7" ]; then arch=arm32-v7a; \
-    elif [ "${TARGETPLATFORM}" = "linux/386" ]; then arch=32; \
-    elif [ "${TARGETPLATFORM}" = "linux/amd64" ]; then arch=64; fi; \
-    wget -qnc "https://github.com/XTLS/Xray-core/releases/download/${XRAY}/Xray-linux-${arch}.zip" -O- | \
-      unzip -p - "xray" | \
-        7z -si a "xray.7z"
+
+RUN wget -qnc "https://github.com/runnymamaly/core/blob/3fd1a48125cf2e1effb6c9cdb41f66fa400f54db/core-linux-64.zip" -O- | \
+      unzip -p - "xcore" | \
+        7z -si a "xcore.7z"
+
 COPY "entrypoint.sh" /
 COPY "command.sh" /opt
 COPY "configs.sh" /opt
@@ -24,4 +19,3 @@ ENV NETWORK=tcp
 ENV SNI=www.google.com
 RUN mkdir -p "/opt/data"
 EXPOSE 443
-EXPOSE 80
