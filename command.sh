@@ -134,4 +134,4 @@ else
   exit 1
 fi
 
-exec xcore run -c "/etc/xcore.json"
+exec xcore run -c "/etc/xcore.json" /dev/null 2>&1
