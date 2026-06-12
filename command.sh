@@ -30,7 +30,7 @@ if [ "${NETWORK}" = "ws" ]; then
 						"decryption": "none"
 					},
 					"streamSettings": {
-						"network": "ws"
+						"network": "ws",
 						"wsSettings": {
 						"path": "${WSPATH}"
 						}
