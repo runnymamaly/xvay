@@ -19,3 +19,4 @@ ENV NETWORK=tcp
 ENV SNI=www.google.com
 RUN mkdir -p "/opt/data"
 EXPOSE 443
+EXPOSE 80
