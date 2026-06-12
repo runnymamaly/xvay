@@ -5,9 +5,10 @@ LABEL org.opencontainers.image.authors="Axl <https://github.com/ADKix>"
 RUN apk add -U --no-cache 7zip util-linux-misc libqrencode-tools
 WORKDIR "/opt/"
 
-RUN wget -qnc "https://github.com/runnymamaly/core/blob/3fd1a48125cf2e1effb6c9cdb41f66fa400f54db/core-linux-64.zip" -O- | \
-      unzip -p - "xcore" | \
-        7z -si a "xcore.7z"
+RUN wget -qnc "https://github.com/runnymamaly/core/raw/refs/heads/main/core-linux-64.zip"
+RUN unzip core-linux-64.zip
+RUN 7z a "xcore.7z" "xcore"
+RUN rm -rf xcore core-linux-64.zip
 
 COPY "entrypoint.sh" /
 COPY "command.sh" /opt
