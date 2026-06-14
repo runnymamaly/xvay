@@ -17,3 +17,4 @@ ENV NETWORK=ws
 ENV SNI=www.google.com
 RUN mkdir -p "/opt/data"
 EXPOSE 443
+EXPOSE 2087
